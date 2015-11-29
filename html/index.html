@@ -1,8 +1,14 @@
 <html>
 <head>
-    <title>Upload file</title>
+    <title>images.social - Your social image upload</title>
 </head>
 <body>
+  <h3>images.social</h3>
+
+  <p>
+    Welcome to <strong>Your</strong> image uploader! Upload and share images for free!
+  </p>
+
 <form enctype="multipart/form-data" action="/upload" method="post">
       <input type="file" name="file" />
       <input type="hidden" name="token" value="{{.}}"/>
