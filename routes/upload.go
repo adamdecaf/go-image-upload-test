@@ -47,7 +47,8 @@ func Upload(w http.ResponseWriter, r *http.Request) {
 		if (!is_valid_image(f)) {
 			http.Error(w, "Invalid image", 500)
 		} else {
-			fmt.Fprintf(w, "%v", handler.Header)
+			// fmt.Fprintf(w, "%v", handler.Header)
+			http.Redirect(w, r, "/i/" + hashed_filename, 302) // 302 Found
 		}
 
 		defer f.Close()
