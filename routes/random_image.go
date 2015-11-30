@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func RandomImage(w http.ResponseWriter, r *http.Request) {
@@ -21,5 +22,7 @@ func RandomImage(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error reading file", 500)
 	}
 
-	http.ServeFile(w, r, file)
+	fixed_filename := strings.Replace(file, "tmp", "i", -1)
+
+	http.Redirect(w, r, fixed_filename, 302) // 302 Found
 }
